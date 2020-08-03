@@ -30,6 +30,7 @@
     methods:{
       itemClick(index) {
         this.currentindex = index
+        this.$emit('titleClick', index)
       },
       imgClick() {
         this.$router.back()
