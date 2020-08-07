@@ -26,7 +26,7 @@ export default {
   name: 'DetailBottomBar',
   methods: {
     addToCart(){
-      this.$emit("addCart")
+      this.$emit("addtoCart")
     },
     Buy(){
       this.$toast.show("就是不卖给你，咋啦！")

@@ -11,6 +11,10 @@ import zh from './zh.js'
 import en from './en.js'
 
 
+import { Toast } from 'vant';
+import 'vant/lib/index.css';
+Vue.use(Toast);
+
 
 Vue.use(VueI18n)
 const i18n = new VueI18n({

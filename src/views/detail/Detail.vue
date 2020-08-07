@@ -11,7 +11,7 @@
       <DetailCommentInfo ref='comment' :commentInfo='commentInfo'></DetailCommentInfo>
       <GoodsList ref='recommend' :goods='recomments'></GoodsList>
     </scroll>
-    <DetailBottomBar @addCart='addCart'></DetailBottomBar>
+    <DetailBottomBar @addtoCart='addtoCart'></DetailBottomBar>
     <back-top @click.native='backClick' v-show="isShowBackTop"></back-top>
   </div>
 </template>
@@ -31,6 +31,7 @@
   import debounce from '../../common/utils.js'
   import Scroll from '../../components/common/scroll/Scroll.vue'
   import {backTopMixin} from '../../common/mixin.js'
+  import {mapActions} from 'vuex'
   export default {
     name:'Detail',
     components:{
@@ -91,6 +92,8 @@
     },
 
     methods: {
+      ...mapActions(['addCart']),
+
       //保证图片加载成功
       imageLoad() {
         this.$refs.scroll.refresh()
@@ -118,7 +121,7 @@
         }
 
       },
-      addCart() {
+      addtoCart() {
         //获取购物车需要展示的信息
         const product = {}
         product.image = this.topImages[0]
@@ -128,7 +131,13 @@
         product.iid = this.iid
         //将商品添加到购物车
         // this.$store.commit('addCart', product)
-        this.$store.dispatch('addCart', product)
+        // this.$store.dispatch('addCart', product).then(res => {
+        //   console.log(res)
+        // })
+        this.addCart(product).then(res => {
+          this.$toast('添加成功')
+
+        })
       }
     }
   }
