@@ -9,13 +9,13 @@ import VueI18n from 'vue-i18n'
 import zh from './zh.js'
 
 import en from './en.js'
-
+import animated from 'animate.css'
 
 import { Toast } from 'vant';
 import 'vant/lib/index.css';
 Vue.use(Toast);
 
-
+Vue.use(animated)
 Vue.use(VueI18n)
 const i18n = new VueI18n({
 locale: localStorage.getItem('lang') || 'zh',
